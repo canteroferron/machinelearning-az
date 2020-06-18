@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri May 15 08:11:10 2020
+
+@author: jcantero
+"""
+
+#Apriori
+
+# Cómo importar las librerías
+import pandas as pd
+
+# Importar el data set
+dataset = pd.read_csv('Market_Basket_Optimisation.csv', header = None)
+transactions = []
+for i in range(0, 7501):
+    transactions.append([str(dataset.values[i, j]) for j in range(0, 20)])
+    
+# Entrenar le algoritmo
+from apyori import apriori
+rules = apriori(transactions, min_support = 0.003, min_confidence = 0.2, min_lift = 3, min_length = 2)
+
+# Visualización de los resultados
+results = list(rules)
+
+print(results[4])
+
+    
+
