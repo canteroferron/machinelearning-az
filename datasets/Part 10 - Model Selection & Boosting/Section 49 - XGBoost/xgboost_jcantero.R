@@ -32,7 +32,7 @@ classifier = xgboost(data = as.matrix(trainingSet[, -11]), label = trainingSet$E
 
 # Aplicar F Fold Cross Validation
 library(caret)
-folds = createFolds(trainingSet$Purchased, k = 10)
+folds = createFolds(trainingSet$Exited, k = 10)
 cv = lapply(folds, function(x) {
   trainingFold = trainingSet[-x, ]
   testingFold = trainingSet[x, ]
